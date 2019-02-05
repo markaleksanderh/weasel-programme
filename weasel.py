@@ -1,14 +1,10 @@
 import string
-from time import sleep
 from random import randint
-alphabet = string.ascii_lowercase + " "
-from copy import deepcopy
 
 def random_letter():
     alphabet = string.ascii_lowercase + " "
-    rand_letter = alphabet[randint(0, len(alphabet)-1)]
-    return rand_letter
-
+    letter = alphabet[randint(0, len(alphabet)-1)]
+    return letter
 
 def create_initial(target):
     # REFACTOR
@@ -29,22 +25,56 @@ def mutate(gene, chance, target):
     return gene
 
 
-def generation():
-    pass
+def generation(gene, chance, pool_size, target):
+    gene_pool = []
+    for i in range(pool_size):
+        gene_pool.append(mutate(gene, chance, target))
+    return gene_pool
 
-def fittest():
+
+def fittest(gene_pool, target):
+    # Compare against target
+    # Split string
+    target = list(target)
+    # Keep score and index
+    fittest_score = 0
+    index = 0
+    for i in range(len(gene_pool)):
+        # print(gene_pool[i])
+        comp = list(gene_pool[i])
+        score = 0
+        # print(comp)
+        for j in range(len(comp)):
+            print(comp[j] + ' ----- ' + target[j])
+            if comp[j] == target[j]:
+                print('MATCH')
+                score = score + 1
+        if score > fittest_score:
+            index = i
+            fittest_score = score
+    print(fittest_score)
+    print(index)
+    print(gene_pool[i])
+    # return gene_pool[]
+
+
     pass
 
 if __name__ == '__main__':
-    target = "hello"
-    chance =  5
+    target = "hello world"
+    chance =  20
     initial = create_initial(target)
     gen = initial
-    # print(initial + " ------------- initial")
-    for i in range(500):
-        gen = mutate(gen, chance, target)
-        print(target + "-- target")
-        print(gen + "-- gen")
-        # print(gene + " << main")
-        # print(initial + "-- init")
-        # sleep(0.5)
+    # print(generation(gen, chance, 10, target
+    # generation(gen, chance, 10, target)
+    first_generation = generation(gen, chance, 50, target)
+    # print(first_generation)
+    fittest(first_generation, target)
+    # gens = 0
+    # while True:
+    #     gen = mutate(gen, chance, target)
+    #     gens += 1
+    #     print(gen)
+    #     if gen == target:
+    #         print("Number of generations: {}".format(gens))
+    #         break
