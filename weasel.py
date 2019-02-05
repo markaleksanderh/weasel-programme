@@ -1,6 +1,8 @@
 import string
+from time import sleep
 from random import randint
 alphabet = string.ascii_lowercase + " "
+from copy import deepcopy
 
 def random_letter():
     alphabet = string.ascii_lowercase + " "
@@ -16,20 +18,16 @@ def create_initial(target):
         initial.append(random_letter())
     return ''.join(initial)
 
-def mutate(str, chance, target):
-    # REFACTOR
-    str = list(str)
-    mutated = []
-    for i in range(len(str)):
-        if str[i] == target[i]:
-            mutated.append(str[i])
-        else:
-            random = randint(0, 100)
-            if random < chance:
-                mutated.append(random_letter())
-            else:
-                mutated.append(str[i])
-    return ''.join(mutated)
+def mutate(gene, chance, target):
+    gene = list(gene)
+    for i in range(len(gene)):
+        if gene[i] != target[i]:
+            n = randint(0, 100)
+            if n < chance:
+                gene[i] = random_letter()
+    gene = ''.join(gene)
+    return gene
+
 
 def generation():
     pass
@@ -38,8 +36,15 @@ def fittest():
     pass
 
 if __name__ == '__main__':
-    target = "some target string"
+    target = "hello"
     chance =  5
     initial = create_initial(target)
-    for i in range(10):
-        print(mutate(initial, chance, target))
+    gen = initial
+    # print(initial + " ------------- initial")
+    for i in range(500):
+        gen = mutate(gen, chance, target)
+        print(target + "-- target")
+        print(gen + "-- gen")
+        # print(gene + " << main")
+        # print(initial + "-- init")
+        # sleep(0.5)
