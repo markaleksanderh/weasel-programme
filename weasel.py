@@ -40,14 +40,12 @@ def fittest(gene_pool, target):
     fittest_score = 0
     index = 0
     for i in range(len(gene_pool)):
-        # print(gene_pool[i])
         comp = list(gene_pool[i])
         score = 0
-        # print(comp)
         for j in range(len(comp)):
             print(comp[j] + ' ----- ' + target[j])
             if comp[j] == target[j]:
-                print('MATCH')
+
                 score = score + 1
         if score > fittest_score:
             index = i
@@ -55,10 +53,8 @@ def fittest(gene_pool, target):
     print(fittest_score)
     print(index)
     print(gene_pool[i])
-    # return gene_pool[]
+    return gene_pool[i]
 
-
-    pass
 
 if __name__ == '__main__':
     target = "hello world"
