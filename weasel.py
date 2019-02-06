@@ -43,34 +43,22 @@ def fittest(gene_pool, target):
         comp = list(gene_pool[i])
         score = 0
         for j in range(len(comp)):
-            print(comp[j] + ' ----- ' + target[j])
             if comp[j] == target[j]:
 
                 score = score + 1
         if score > fittest_score:
             index = i
             fittest_score = score
-    print(fittest_score)
-    print(index)
-    print(gene_pool[i])
     return gene_pool[i]
 
 
 if __name__ == '__main__':
     target = "hello world"
-    chance =  20
+    chance =  10
+    pool_size = 50
     initial = create_initial(target)
     gen = initial
-    # print(generation(gen, chance, 10, target
-    # generation(gen, chance, 10, target)
-    first_generation = generation(gen, chance, 50, target)
-    # print(first_generation)
-    fittest(first_generation, target)
-    # gens = 0
-    # while True:
-    #     gen = mutate(gen, chance, target)
-    #     gens += 1
-    #     print(gen)
-    #     if gen == target:
-    #         print("Number of generations: {}".format(gens))
-    #         break
+    for i in range(500):
+        gen = generation(gen, chance, pool_size, target)
+        gen = fittest(gen, target)
+        print(gen)
