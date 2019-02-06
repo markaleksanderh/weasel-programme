@@ -54,11 +54,17 @@ def fittest(gene_pool, target):
 
 if __name__ == '__main__':
     target = "hello world"
-    chance =  10
-    pool_size = 50
+    chance =  5
+    pool_size = 500
     initial = create_initial(target)
     gen = initial
-    for i in range(500):
+    # for i in range(500):
+    #     gen = generation(gen, chance, pool_size, target)
+    #     gen = fittest(gen, target)
+    #     print(gen)
+    while True:
         gen = generation(gen, chance, pool_size, target)
         gen = fittest(gen, target)
         print(gen)
+        if gen == target:
+            break
