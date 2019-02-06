@@ -22,17 +22,12 @@ def mutate(gene, chance, target):
 
 
 def generation(gene, chance, pool_size, target):
-    gene_pool = []
-    for i in range(pool_size):
-        gene_pool.append(mutate(gene, chance, target))
+    gene_pool = [mutate(gene, chance, target) for i in range(pool_size)]
     return gene_pool
 
 
 def fittest(gene_pool, target):
-    # Compare against target
-    # Split string
     target = list(target)
-    # Keep score and index
     fittest_score = 0
     index = 0
     for i in range(len(gene_pool)):
@@ -45,7 +40,8 @@ def fittest(gene_pool, target):
         if score > fittest_score:
             index = i
             fittest_score = score
-    return gene_pool[i]
+    fittest = gene_pool[i]
+    return fittest
 
 
 if __name__ == '__main__':
@@ -53,12 +49,10 @@ if __name__ == '__main__':
     chance =  5
     pool_size = 500
     initial = create_initial(target)
-    print(initial)
     gen = initial
-
-    # while True:
-    #     gen = generation(gen, chance, pool_size, target)
-    #     gen = fittest(gen, target)
-    #     print(gen)
-    #     if gen == target:
-    #         break
+    while True:
+        gen = generation(gen, chance, pool_size, target)
+        gen = fittest(gen, target)
+        print(gen)
+        if gen == target:
+            break
