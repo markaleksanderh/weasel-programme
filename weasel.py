@@ -7,12 +7,8 @@ def random_letter():
     return letter
 
 def create_initial(target):
-    # REFACTOR
-    length = len(target)
-    initial = []
-    for i in range(length):
-        initial.append(random_letter())
-    return ''.join(initial)
+    initial = ''.join([random_letter() for i in range(len(target))])
+    return initial
 
 def mutate(gene, chance, target):
     gene = list(gene)
@@ -57,14 +53,12 @@ if __name__ == '__main__':
     chance =  5
     pool_size = 500
     initial = create_initial(target)
+    print(initial)
     gen = initial
-    # for i in range(500):
+
+    # while True:
     #     gen = generation(gen, chance, pool_size, target)
     #     gen = fittest(gen, target)
     #     print(gen)
-    while True:
-        gen = generation(gen, chance, pool_size, target)
-        gen = fittest(gen, target)
-        print(gen)
-        if gen == target:
-            break
+    #     if gen == target:
+    #         break
