@@ -53,6 +53,7 @@ def weasel(target, chance, pool_size):
         fittest_in_generation.append(gen)
         if gen == target:
             break
+
     return fittest_in_generation
 
 # if __name__ == '__main__':
