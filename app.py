@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/compute', methods=['GET'])
+@app.route('/compute', methods=['POST'])
 def compute():
     target = request.form['target']
     chance = int(request.form['chance'])
