@@ -1,11 +1,28 @@
-<html>
-<head>
-  <title>{{target}}</title>
-</head>
-<body>
-  <h4>Initial:</h4>
-  <p>...</p>
-  <h4>Target:</h4>
-  <p>{{target}}</p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Target: {{target}}</p>
+<h4>Result</h4>
+<p><span id='counter'></span>: <span id='output'></span></p>
+<script>
+
+var output = {{output|tojson|safe}}
+var el = document.getElementById('output')
+var counter = document.getElementById('counter')
+var i = 0
+
+function writeOutput() {
+  el.textContent = output[i]
+  counter.textContent = i
+  i++
+  if (i < output.length) {
+    setTimeout(writeOutput, 10)
+  }
+}
+
+writeOutput()
+
+</script>
+
+{% endblock %}

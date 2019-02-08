@@ -1,57 +1,14 @@
-<html>
-<head>
-  <title>Weasel programme</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-</head>
-<body>
-  <div id="root"></div>
-  <!-- <h4>Enter test string:</h4>
-  <form method="POST">
-    <label>Target string</label>
-    <input type="text" name="target">
-    <label>Chance of mutation</label>
-    <input type="number" name="chance">
-    <label>Size of each generation</label>
-    <input type="number" name="pool_size">
-    <input type="submit" value="Submit">
-  </form> -->
-  <script type="text/babel">
-  class Form extends React.Component {
-    constructor() {
-      super();
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(event) {
-      event.preventDefault();
-      const data = new FormData(event.target)
-      fetch('/compute', {
-        method: 'POST',
-        body: data
-      });
-    }
-    render() {
-      return (
-        <form onSubmit={this.handleSubmit}>
-          <label>Target string</label>
-          <input type="text" id="target" name="target"/>
-          <label>Chance of mutation</label>
-          <input type="number" id="chance" name="chance"/>
-          <label>Size of each generation</label>
-          <input type="number" id="pool_size" name="pool_size"/>
-          <button>Send data!</button>
-        </form>
-      )
-    }
-  }
+{% extends "base.html" %}
 
-  ReactDOM.render(<Form/>, document.getElementById('root'))
-
-
-
-
-
-  </script>
-</body>
-</html>
+{% block content %}
+<h4>Enter test string:</h4>
+<form method="POST">
+  <label>Target string</label>
+  <input type="text" name="target">
+  <label>Chance of mutation</label>
+  <input type="number" name="chance">
+  <label>Size of each generation</label>
+  <input type="number" name="pool_size">
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

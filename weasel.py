@@ -49,7 +49,7 @@ def weasel(target, chance, pool_size):
     while True:
         gen = generation(gen, chance, pool_size, target)
         gen = fittest(gen, target)
-        print(gen)
+        # print(gen)
         fittest_in_generation.append(gen)
         if gen == target:
             break
