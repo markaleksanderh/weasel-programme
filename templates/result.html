@@ -2,9 +2,34 @@
 
 {% block content %}
 
-<p>Target: {{target}}</p>
-<h4>Result</h4>
-<p><span id='counter'></span>: <span id='output'></span></p>
+<div class="row">
+  <div class="col">
+    <h6>Target</h6>
+    <h2 class="monospace-output" id="result-target"><span>{{target}}</span></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h6>Current</h6>
+    <h2 class="monospace-output" id="result-output"><span id='output'></span></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h6>Generations: <span id='counter'></span></h6>
+    <!-- <h5 class="monospace-output"><span id='counter'></span></h5> -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <script>
 
 var output = {{output|tojson|safe}}

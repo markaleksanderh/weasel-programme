@@ -3,15 +3,19 @@
 <head>
   <title>WP</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
 </head>
 <body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4 page-title">Genetic Algorithm</h1>
+      <p class="lead">Python + Flask implementation of weasel program as described in Richard Dawkins' The Blind Watchmaker.</p>
+      <hr class="my-4">
+      <p>Created by <a href="https://github.com/markaleksanderh">Mark Aleksander Hil</a>. Repo available <a href="https://github.com/markaleksanderh/weasel-programme">here</a>.</p>
+    </div>
+  </div>
   <div class="container">
-    <h1>Base template</h1>
     {% block content %}{% endblock %}
   </div>
-  <script>
-
-  </script>
 </body>
-
 </html>

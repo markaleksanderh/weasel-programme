@@ -1,14 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h4>Enter test string:</h4>
 <form method="POST">
-  <label>Target string</label>
-  <input type="text" name="target">
-  <label>Chance of mutation</label>
-  <input type="number" name="chance">
-  <label>Size of each generation</label>
-  <input type="number" name="pool_size">
-  <input type="submit" value="Submit">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="targetInput">Target string</label>
+      <input type="text" class="form-control" id="targetInput" name="target">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="chanceMutation">Chance of mutation</label>
+      <select class="form-control" id="chanceMutation" name="chance">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="poolSize">Pool size</label>
+      <select class="form-control" id="poolSize" name="pool_size">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2">
+      <button type="submit" class="btn btn-primary mb-2" value="Submit">Submit</button>
+    </div>
+  </div>
 </form>
 {% endblock %}
